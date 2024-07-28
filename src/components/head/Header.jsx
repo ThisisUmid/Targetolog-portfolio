@@ -4,7 +4,7 @@ import { Hero } from './Hero'
 
 export const Header = () => {
   return (
-    <header className='w-full h-[650px] bg-main flex flex-col items-center justify-between'>
+    <header className='w-full lg:h-[650px] bg-main flex flex-col items-center justify-between bg-no-repeat bg-cover'>
         <Navbar />
         <Hero />
     </header>

@@ -1,12 +1,75 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Correct path to the image */
-.bg-main {
-  background-image: url('./img/main-bg.jpeg');
+/* Custom styles for Swiper */
+.swiper-container {
+  width: 100%;
+  height: 100%;
 }
 
-.container{
-    max-width: 80rem /* 1280px */;
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Correct path to the image */
+.bg-main {
+  background-image: url("./img/main-bg.jpeg");
+}
+
+.container {
+  max-width: 80rem /* 1280px */;
+}
+.bg-clients {
+  background-image: url("./img/clients-bg.png");
+}
+.bg-footer {
+  background-image: url("./img/footer-bg.png");
+}
+.bg-gelik {
+  background-image: url("./img/gelik.jpg");
+}
+.bg-subbit {
+  background-image: url("./img/summit.png");
+}
+.bg-chevrolet {
+  background-image: url("./img/chevrolet.jpg");
+}
+.bg-houses {
+  background-image: url("./img/houses.jpg");
+}
+.bg-kinder {
+  background-image: url("./img/kinder.jpg");
+}
+.bg-tree{
+  background-image: url('./img/tree.jpg');
+}
+.bg-plane{
+  background-image: url('./img/plane.jpg');
+}
+.bg-dishes{
+  background-image: url('./img/dishes.jpg');
+}
+.bg-pansionat{
+  background-image: url('./img/pansionat.jpg');
+}
+.bg-china{
+  background-image: url('./img/china.jpg');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }

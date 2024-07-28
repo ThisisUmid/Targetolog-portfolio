@@ -18,14 +18,14 @@ export const Navbar = () => {
   };
 
   const navItems = [
-    { label: t("Кейсы"), href: "#" },
-    { label: t("Отзывы"), href: "#about" },
-    { label: t("Контакты"), href: "#service" },
+    { label: t("Кейсы"), href: "#keysi" },
+    { label: t("Отзывы"), href: "#review" },
+    { label: t("Контакты"), href: "#contact" },
   ];
   const language = localStorage.getItem("i18nextLng");
 
   return (
-    <nav className="sticky top-0 z-50 py-3 w-full">
+    <nav className="fixed top-0 z-50 py-3 w-full bg-black">
       <div className="container px-4 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           <div className="flex items-center flex-shrink-0">
@@ -42,23 +42,18 @@ export const Navbar = () => {
           </div>
           <ul className="hidden text-lg font-bold lg:flex ml-14 space-x-12 text-white">
             {navItems.map((item, index) => (
-              <li key={index}>
+              <li key={index} className="hover:border-2 border-blue-700 rounded-[24px] px-4">
                 <a href={item.href}>{item.label}</a>
               </li>
             ))}
           </ul>
-          <div className="hidden lg:flex justify-center space-x-12 items-center">
-          <select
-              value={language}
-              name="Lng"
-              id="lng"
-              onChange={handleChange}
-              className="border-2 rounded-md p-1 ml-3 mr-7 bg-blue-500"
-            >
-              <option value="ru">Русский</option>
-              <option value="uz">Узбек</option>
-              <option value="en">English</option>
-            </select>
+          <div className="hidden lg:flex">
+          <button value="ru" onClick={handleChange} className="text-white p-2 border-2 border-blue-700 active:bg-blue-700">
+            RU
+          </button>
+          <button value="uz" onClick={handleChange} className="text-white p-2 border-2 border-blue-700 active:bg-blue-700">
+            UZ
+          </button>
           </div>
           <div className="lg:hidden md:flex flex-col justify-end">
             <button onClick={toggleNavbar}>
@@ -67,29 +62,24 @@ export const Navbar = () => {
           </div>
         </div>
         {mobileDrawerOpen && (
-          <div className="fixed right-0 z-20 bg-slate-100 w-full p-12 flex flex-col justify-center items-center lg:hidden">
+          <div className="fixed right-0 z-20 bg-black w-full p-12 flex flex-col justify-center items-center lg:hidden">
             <ul>
               {navItems.map((item, index) => (
-                <li key={index} className="py-4">
+                <li key={index} className="py-4 text-white">
                   <a href={item.href} onClick={toggleNavbar}>
                     {item.label}
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-6">
-            <select
-              value={language}
-              name="Lng"
-              id="lng"
-              onChange={handleChange}
-              className="border-2 rounded-md p-1 ml-3"
-            >
-              <option value="ru">Русский</option>
-              <option value="uz">Узбек</option>
-              <option value="en">English</option>
-            </select>
-            </div>
+            <div className="flex">
+          <button value="ru" onClick={handleChange} className="text-white p-2 border-2 border-blue-700">
+            RU
+          </button>
+          <button value="uz" onClick={handleChange} className="text-white p-2 border-2 border-blue-700">
+            UZ
+          </button>
+          </div>
           </div>
         )}
       </div>
