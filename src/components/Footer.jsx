@@ -27,7 +27,8 @@ export const Footer = () => {
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     const name = document.getElementById("name").value;
     const number = document.getElementById("number").value;
-    const message = `Name: ${name}\nNumber: ${number}`;
+    const question = document.getElementById("question").value;
+    const message = `Name: ${name}\nNumber: ${number}\nQuestion: ${question}`;
 
     axios({
       url: url,
@@ -38,7 +39,7 @@ export const Footer = () => {
       },
     })
       .then((res) => {
-        document.getElementById("myForm").reset();
+        document.getElementById("myFormFooter").reset();
         toast.success("Message Sent Successfully!", {
           position: "top-right",
           autoClose: 5000,
@@ -115,7 +116,7 @@ export const Footer = () => {
               {t("Есть вопросы? - Пишите!")}
             </h2>
             <form
-              id="myForm"
+              id="myFormFooter"
               action=""
               className="min-w-[220px] lg:min-w-[300px] md:px-32 lg:p-0"
               onSubmit={SendMessage}
@@ -123,7 +124,7 @@ export const Footer = () => {
               <input
                 id="name"
                 type="text"
-                className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-neutral-700 text-neutral-800 text-base font-medium mt-[30px] p-5"
+                className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-neutral-700 text-white text-base font-medium mt-[30px] p-5"
                 placeholder={t("Ваше имя")}
                 required
               />
@@ -131,15 +132,15 @@ export const Footer = () => {
                 <input
                   id="number"
                   type="text"
-                  className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-neutral-700 text-neutral-800 text-xs sm:text-base font-medium mt-[30px] p-5"
+                  className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-neutral-700 text-white text-xs sm:text-base font-medium mt-[30px] p-5"
                   placeholder="+998-90-123-45-67"
                   required
                 />
               </label>
               <input
-                id="name"
+                id="question"
                 type="text"
-                className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-neutral-700 text-neutral-800 text-base font-medium mt-[30px] p-5"
+                className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-neutral-700 text-white text-base font-medium mt-[30px] p-5"
                 placeholder={t("Вопрос")}
                 required
               />

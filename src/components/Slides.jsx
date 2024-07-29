@@ -2,8 +2,13 @@ import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Pagination, Navigation, HashNavigation , Autoplay } from "swiper/modules";
-import 'swiper/css/pagination';
+import {
+  Pagination,
+  Navigation,
+  HashNavigation,
+  Autoplay,
+} from "swiper/modules";
+import "swiper/css/pagination";
 import slidesphoto from "../img/image.png";
 import slidesimage from "../img/slidesimage.jpg";
 import { FaPlayCircle } from "react-icons/fa";
@@ -38,7 +43,10 @@ export const Slides = () => {
   ];
 
   return (
-    <div id="review" className="bg-black text-white h-fit relative flex items-center justify-center">
+    <div
+      id="review"
+      className="bg-black text-white h-fit relative flex items-center justify-center"
+    >
       <div className="container">
         <div className="">
           <h2 className="text-3xl text-center text-white font-sans font-bold my-5 md:text-5xl lg:text-5xl">
@@ -52,7 +60,13 @@ export const Slides = () => {
             ref={swiperRef}
             modules={[Pagination, Navigation, Autoplay, HashNavigation]}
             spaceBetween={50}
-            slidesPerView={3}
+            slidesPerView={1}
+            breakpoints={{
+              600: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+            }}
             navigation
             autoplay={{ delay: 2500, disableOnInteraction: false }}
             onSwiper={(swiper) => {

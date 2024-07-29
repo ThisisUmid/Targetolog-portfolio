@@ -28,7 +28,7 @@ export const Contact = () => {
       },
     })
       .then((res) => {
-        document.getElementById("myForm").reset();
+        document.getElementById("myFormContact").reset();
         toast.success("Message Sent Successfully!", {
           position: "top-right",
           autoClose: 5000,
@@ -55,7 +55,10 @@ export const Contact = () => {
   };
 
   return (
-    <div id="contact" className="w-full h-auto bg-main flex flex-col items-center justify-between bg-no-repeat bg-cover">
+    <div
+      id="contact"
+      className="w-full h-auto bg-main flex flex-col items-center justify-between bg-no-repeat bg-cover"
+    >
       <div className="container my-10 ">
         <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center rounded-3xl ">
           <div className="w-full p-8">
@@ -86,7 +89,7 @@ export const Contact = () => {
               )}
             </p>
             <form
-              id="myForm"
+              id="myFormContact"
               action=""
               className="w-full"
               onSubmit={SendMessage}
@@ -116,8 +119,8 @@ export const Contact = () => {
                 {loading ? t("Отправляется...") : t("Получить консультацию")}
               </button>
             </form>
-            <ToastContainer />
           </div>
+          <ToastContainer />
         </div>
       </div>
     </div>

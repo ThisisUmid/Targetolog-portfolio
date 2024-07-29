@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,8 +10,8 @@ import Typography from "@mui/material/Typography";
 
 export const Scoring = () => {
   const { t } = useTranslation();
-
   const [loading, setLoading] = useState(false);
+  const [val, setVal] = useState(30);
 
   const SendMessage = (event) => {
     setLoading(true);
@@ -21,7 +21,10 @@ export const Scoring = () => {
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     const name = document.getElementById("name").value;
     const number = document.getElementById("number").value;
-    const message = `Name: ${name}\nNumber: ${number}`;
+    const region = document.getElementById("region").value;
+    const bill = document.getElementById("bill").value;
+    const clients = val;  // Using the state value directly
+    const message = `Name: ${name}\nNumber: ${number}\nRegion: ${region}\nBill: ${bill}\nClients: ${clients}`;
 
     axios({
       url: url,
@@ -33,7 +36,7 @@ export const Scoring = () => {
     })
       .then((res) => {
         document.getElementById("myForm").reset();
-        toast.success("Message Sent Successfully!", {
+        toast.success(t("Message Sent Successfully!"), {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -46,7 +49,7 @@ export const Scoring = () => {
       })
       .catch((error) => {
         console.log("Error while sending data", error);
-        toast.error("Error while sending message.", {
+        toast.error(t("Error while sending message."), {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -55,9 +58,9 @@ export const Scoring = () => {
           draggable: true,
           progress: undefined,
         });
+        setLoading(false);
       });
   };
-  const [val, setVal] = useState(30);
 
   const handleChangeRange = (event, newValue) => {
     setVal(newValue);
@@ -82,7 +85,6 @@ export const Scoring = () => {
             </p>
             <form
               id="myForm"
-              action=""
               className="w-full max-w-md"
               onSubmit={SendMessage}
             >
@@ -93,7 +95,7 @@ export const Scoring = () => {
                 placeholder={t("Имя")}
                 required
               />
-              <label htmlFor="" className="relative">
+              <label htmlFor="number" className="relative">
                 <input
                   id="number"
                   type="text"
@@ -103,14 +105,14 @@ export const Scoring = () => {
                 />
               </label>
               <input
-                id="name"
+                id="region"
                 type="text"
                 className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-white text-neutral-800 text-base font-medium mt-[30px] p-5"
                 placeholder={t("Регион продвижение")}
                 required
               />
               <input
-                id="name"
+                id="bill"
                 type="text"
                 className="flex items-center outline-none w-full h-[50px] rounded-[25px] bg-white text-neutral-800 text-base font-medium mt-[30px] p-5"
                 placeholder={t("Средний чек")}
@@ -150,9 +152,8 @@ export const Scoring = () => {
               </Box>
               <button
                 type="submit"
-                className="
-      flex w-full items-center justify-center h-[50px] border-none outline-none rounded-[25px] bg-blue-600 text-white text-lg font-bold cursor-pointer mt-[50px] hover:bg-blue-700 "
-                loading={loading}
+                className="flex w-full items-center justify-center h-[50px] border-none outline-none rounded-[25px] bg-blue-600 text-white text-lg font-bold cursor-pointer mt-[50px] hover:bg-blue-700"
+                disabled={loading}
               >
                 {loading ? t("Отправляется...") : t("Получить консультацию")}
               </button>
